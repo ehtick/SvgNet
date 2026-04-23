@@ -1,13 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;netstandard2.1;net8.0;net9.0</TargetFrameworks>
-		<TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">$(TargetFrameworks);net462;net8.0-windows;net9.0-windows</TargetFrameworks>
-		<UseWindowsForms Condition="'$(TargetFramework)' == 'net8.0-windows' or '$(TargetFramework)' == 'net9.0-windows'">true</UseWindowsForms>
-		<LangVersion>preview</LangVersion>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net8.0;net9.0;net10.0</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">$(TargetFrameworks);net462;net8.0-windows;net9.0-windows;net10.0-windows</TargetFrameworks>
+		<UseWindowsForms Condition="'$(TargetFramework)' == 'net8.0-windows' or '$(TargetFramework)' == 'net9.0-windows' or '$(TargetFramework)' == 'net10.0-windows'">true</UseWindowsForms>
 		<AssemblyName>SVG</AssemblyName>
 		<PackageId>SvgNet</PackageId>
-		<Version>3.5.0</Version>
 		<RootNamespace>SvgNet</RootNamespace>
 		<DocumentationFile>svgnetdoc.xml</DocumentationFile>
 		<NoWarn>CS1591</NoWarn>
@@ -15,16 +13,14 @@
 		<Description>C# framework for creating SVG images</Description>
 		<Company>SvgNet and SvgGdi Bridge Project</Company>
 		<Authors>Rafael Teixeira, Mojmír Němeček, Benjamin Peterson</Authors>
-		<Copyright>2003, 2010, 2015-2024 RiskCare Ltd, SvgNet and SvgGdi Bridge Project, Rafael Teixeira, Mojmír Němeček</Copyright>
+		<Copyright>2003, 2010, 2015-2026 RiskCare Ltd, SvgNet and SvgGdi Bridge Project, Rafael Teixeira, Mojmír Němeček</Copyright>
 		<PackageProjectUrl>https://github.com/managed-commons/SvgNet</PackageProjectUrl>
 		<PackageIcon>svgnet.png</PackageIcon>
 		<RepositoryUrl>https://github.com/managed-commons/SvgNet</RepositoryUrl>
 		<PackageTags>SVG</PackageTags>
 		<Product>SvgNet</Product>
 		<RepositoryType>git</RepositoryType>
-		<PackageReleaseNotes>
-			- Drops building for .NET 6.0 which is beyond End of Support
-		</PackageReleaseNotes>
+		<PackageReleaseNotes>$(Notes)</PackageReleaseNotes>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<ImplicitUsings>true</ImplicitUsings>
@@ -52,11 +48,7 @@
 		<WarningsAsErrors>NU1605</WarningsAsErrors>
 	</PropertyGroup>
 
-	<Target Name="TagSources">
-		<Exec Command="git tag v$(Version)" ContinueOnError="true" StandardErrorImportance="low" StandardOutputImportance="low" IgnoreExitCode="true" />
-		<Message Importance="high" Text="Recent tags:" />
-		<Exec Command="git tag --sort=-creatordate | grep v | head -n 1" ContinueOnError="true" StandardErrorImportance="high" StandardOutputImportance="high" IgnoreExitCode="true" />
-	</Target>
+	<Target Name="TagSources" />
 
 	<Target Name="NugetOrg" DependsOnTargets="Pack" Condition="'$(OS)' == 'Windows_NT' and '$(Configuration)'=='Release'">
 		<PropertyGroup>
@@ -73,7 +65,7 @@
 		<Message Importance="high" Text="Didn't push $(LatestPackage) to Nuget - Already there" Condition="$(VersionAlreadyPushed)" />
 	</Target>
 
-	<ItemGroup Condition="'$(TargetFramework)' != 'net462' And '$(TargetFramework)' != 'net8.0-windows'">
+	<ItemGroup Condition="'$(UseWindowsForms)' != 'true'">
 		<PackageReference Include="System.Drawing.Common" />
 	</ItemGroup>
 

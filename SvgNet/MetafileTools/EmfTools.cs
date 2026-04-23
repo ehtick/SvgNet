@@ -66,10 +66,8 @@ public class EmfReader(Stream stream) : IDisposable {
     public bool IsEndOfFile => stream.Length == stream.Position;
 
     public void Dispose() {
-        if (_reader is not null) {
-            _reader.Close();
-            _reader = null;
-        }
+        _reader?.Close();
+        _reader = null;
         GC.SuppressFinalize(this);
     }
 

@@ -14,6 +14,7 @@ using System.Drawing.Drawing2D;
 using SvgNet.Interfaces;
 
 namespace SvgNet;
+
 public static class TestShared {
     public static Dictionary<string, Action<IGraphics>> Renderers { get; } = new Dictionary<string, Action<IGraphics>>() {
         ["Clipping"] = RenderClipping,

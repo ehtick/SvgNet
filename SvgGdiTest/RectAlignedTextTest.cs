@@ -11,6 +11,7 @@ using System.Drawing;
 using SvgNet.Interfaces;
 
 namespace SvgGdiTest;
+
 public static class RectAlignedTextTest {
     public static void RenderRectAlignedText(IGraphics ig, float width, float height, Font baseFont) {
         ig.Clear(Color.White);

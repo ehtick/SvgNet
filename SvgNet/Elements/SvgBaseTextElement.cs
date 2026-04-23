@@ -7,6 +7,7 @@
 */
 
 namespace SvgNet.Elements;
+
 public abstract class SvgBaseTextElement : SvgStyledTransformedElement {
     public SvgLength DX {
         get => (SvgLength)_atts["dx"];

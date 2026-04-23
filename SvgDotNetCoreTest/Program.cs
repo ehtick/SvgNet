@@ -5,6 +5,7 @@ using SvgNet;
 using SvgNet.Interfaces;
 
 namespace SvgDotNetCoreTest;
+
 public static class Program {
     public static void Main(string[] args) {
         foreach (System.Collections.Generic.KeyValuePair<string, Action<IGraphics>> pair in TestShared.Renderers) {

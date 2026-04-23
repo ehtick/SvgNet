@@ -7,6 +7,7 @@
 */
 
 namespace SvgNet.Elements;
+
 public class SvgFilterElement : SvgElement {
     public SvgFilterElement() {
     }

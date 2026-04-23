@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31825.309
+# Visual Studio Version 18
+VisualStudioVersion = 18.5.11716.220 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SvgNet", "SvgNet\SvgNet.csproj", "{BB4C8021-B5E1-4DE2-82CB-14BDFB9837E4}"
 EndProject
@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		.github\workflows\codeql.yml = .github\workflows\codeql.yml
+		Directory.Build.props = Directory.Build.props
 		.github\workflows\dotnetcore.yml = .github\workflows\dotnetcore.yml
 		global.json = global.json
 		LICENSE = LICENSE
