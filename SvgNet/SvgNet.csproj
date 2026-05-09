@@ -24,6 +24,7 @@
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<ImplicitUsings>true</ImplicitUsings>
+		<OutputType>Library</OutputType>
 	</PropertyGroup>
 
 	<ItemGroup>
