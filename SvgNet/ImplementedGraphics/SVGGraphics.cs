@@ -727,7 +727,7 @@ public sealed partial class SvgGraphics : IGraphics {
 
         metafileBuffer.Position = 0;
         var parser = new MetafileTools.MetafileParser();
-        parser.EnumerateMetafile(metafileBuffer, pen.Width, zero, (PointF[] linePoints) => {
+        parser.EnumerateMetafile(metafileBuffer, pen.Width, zero, linePoints => {
             metafileIsEmpty = false;
 
             var pl = new SvgPolylineElement(linePoints) {
@@ -740,7 +740,7 @@ public sealed partial class SvgGraphics : IGraphics {
             if (!_transforms.Result.IsIdentity)
                 pl.Transform = new SvgTransformList(_transforms.Result.Clone());
             _cur.AddChild(pl);
-        }, (PointF[] linePoints, Brush fillBrush) => {
+        }, (linePoints, fillBrush) => {
             metafileIsEmpty = false;
             FillPolygon(fillBrush, linePoints);
         });
